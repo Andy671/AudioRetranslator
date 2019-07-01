@@ -19,11 +19,12 @@ python3 receiver.py YOUR_SERVER_IP YOUR_PORT
 ```
 python3 sender.py YOUR_SERVER_IP YOUR_PORT
 ```
+3. (Optional) You can try set `CHANNELS` to **1** if you want better performance. (Do it in both `sender.py` and `receiver.py`). Also, play with the `BUFFER_SIZE` (`receiver.py`) to see what latency is good for you. I prefer **16384** or **8192**.
 
 ### Sound Check
 If everything is OK -> you should hear the audio from the sender device on the receiver device.
 
 ## How it works
-It simply sends stream of audio bytes with the sockets. The wireless connection is by definition weeker than wired, therefore sometimes you would hear the lags in audio, because the algorithm just skips bytes, if it lost some, and than buffer started overflowing.
+It simply sends stream of audio bytes with the sockets. The wireless connection is by definition weeker than wired, therefore sometimes you would hear the lags in audio, because the algorithm just skips bytes, if it lost some and buffer started overflowing.
 
 Hope you enjoy it) *Have Fun*!
