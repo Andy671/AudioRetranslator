@@ -46,6 +46,7 @@ def send_data():
         print(f'Sending {str(BROADCAST_SIZE)} bytes of audio. {datetime.datetime.now().time()}', end='\r')
 
 try:
+    print(f'Sending {str(round(RATE / BROADCAST_SIZE))} packets per second.')
     sleeptime = 1 / (RATE / BROADCAST_SIZE) / CHANNELS / 2
     while True:
         send_data()

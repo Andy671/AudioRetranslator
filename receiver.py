@@ -10,7 +10,7 @@ is_receiving = False
 
 CHUNK_SIZE = 1024        # Size of frame window to write audio (frames_per_buffer)
 BROADCAST_SIZE = 8192    # Socket receives audio with this size
-BUFFER_SIZE = 8192       # Receive this amount of data before playback
+BUFFER_SIZE = 16384       # Receive this amount of data before playback
 CHANNELS = 2
 FORMAT = pyaudio.paInt16 # 2 bytes size
 RATE = 44100
