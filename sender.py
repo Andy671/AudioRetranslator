@@ -2,6 +2,7 @@ import pyaudio
 import sys
 import socket
 import datetime
+from time import sleep, time
 
 HOST = sys.argv[1]
 PORT = sys.argv[2]
@@ -42,11 +43,14 @@ def send_data():
     if (len(data) > BROADCAST_SIZE):
         sock.sendall(data[:BROADCAST_SIZE])
         data = data[BROADCAST_SIZE:]
-        print(f'Sent {str(BROADCAST_SIZE)} bytes of audio. {datetime.datetime.now().time()}')
+        print(f'Sending {str(BROADCAST_SIZE)} bytes of audio. {datetime.datetime.now().time()}', end='\r')
 
 try:
+    print(f'Sending {str(round(RATE / BROADCAST_SIZE))} packets per second.')
+    sleeptime = 1 / (RATE / BROADCAST_SIZE) / CHANNELS / 2
     while True:
         send_data()
+        sleep(sleeptime - (time() % sleeptime))
 except KeyboardInterrupt:
     print('\nClosing stream...')
     stream.stop_stream()
