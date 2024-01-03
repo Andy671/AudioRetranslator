@@ -43,7 +43,7 @@ def send_data():
     if (len(data) > BROADCAST_SIZE):
         sock.sendall(data[:BROADCAST_SIZE])
         data = data[BROADCAST_SIZE:]
-        print(f'Sent {str(BROADCAST_SIZE)} bytes of audio. {datetime.datetime.now().time()}')
+        print(f'Sending {str(BROADCAST_SIZE)} bytes of audio. {datetime.datetime.now().time()}', end='\r')
 
 try:
     sleeptime = 1 / (RATE / BROADCAST_SIZE) / CHANNELS / 2
